@@ -1,0 +1,15 @@
+[Unit]
+Description=isuxi-perl
+After=syslog.target
+
+[Service]
+WorkingDirectory=/home/isucon/webapp/perl
+EnvironmentFile=/home/isucon/env.sh
+Environment=PLACK_ENV=production
+
+# ExecStart=/home/isucon/.local/perl/bin/carton exec -- start_server --path /tmp/app.sock  --backlog 16384 -- plackup -s Gazelle --workers=10 --max-reqs-per-child 500000 --min-reqs-per-child 400000 -E production -a app.psgi
+ExecStart=/home/isucon/webapp/start.sh
+
+
+[Install]
+WantedBy=multi-user.target
